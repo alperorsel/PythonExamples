@@ -7,63 +7,63 @@ import os
 
 def calc_hand(hand):
 
-    top= 0
+    handval = 0
     
     for i in hand:
         if i not in special_cards:
-            top += int(i)
+            handval += int(i)
         elif i != "A":
-            top += 10
+            handval += 10
         else:
-            if top <= 10:
-                top += 11
+            if handval <= 10:
+                handval += 11
             else:
-                top += 1
+                handval += 1
 
-    return top              
+    return handval              
 
 
 special_cards = ["J", "K", "Q", "A"]               
 
-kartlar=[ '2','3','4','5','6','7','8','9','10','J','K','Q','A',
+cards=[ '2','3','4','5','6','7','8','9','10','J','K','Q','A',
           '2','3','4','5','6','7','8','9','10','J','K','Q','A',
           '2','3','4','5','6','7','8','9','10','J','K','Q','A',
           '2','3','4','5','6','7','8','9','10','J','K','Q','A',
 ]
 
 
-random.shuffle(kartlar)
+random.shuffle(cards)
 
-kurpiye = []
-oyuncu = []
+dealer = []
+player = []
 
-oyuncu.append(kartlar.pop())
-kurpiye.append(kartlar.pop())
-oyuncu.append(kartlar.pop())
-kurpiye.append(kartlar.pop())
+player.append(cards.pop())
+dealer.append(cards.pop())
+player.append(cards.pop())
+dealer.append(cards.pop())
 
 while True:
 
-    oyuncu_puan = calc_hand(oyuncu)
-    kurpiye_puan = calc_hand(kurpiye)
+    player_points = calc_hand(player)
+    dealer_points = calc_hand(dealer)
 
-    print(f"oyuncu kartları: {oyuncu}, puan: {oyuncu_puan}")
-    print(f"kurpiye kartları: {kurpiye[0]} '?', puan: {kurpiye_puan}")
+    print(f"player's cards: {player}, points: {player_points}")
+    print(f"dealer's cards: {dealer[0]} '?', points: {dealer_points}")
 
-    if oyuncu_puan == 21:
-        print('Kazandınız')
-    elif kurpiye_puan == 21:
-        print('Kaybettiniz')
+    if player_points == 21:
+        print('you win')
+    elif dealer_points == 21:
+        print('you lose')
     else:
 	    giris1 = input('devam etmek ister misiniz?')
 
-    while giris1 == 'hayır' and kurpiye_puan < 21:
-        print(f"oyuncu kartları: {oyuncu}, puan: {oyuncu_puan}")
-        print(f"kurpiye kartları: {kurpiye}, puan: {kurpiye_puan}")
-        if  kurpiye_puan > oyuncu_puan:
-            print('kurpiye kazandı')
+    while giris1 == 'hayır' and dealer_points < 21:
+        print(f"player's cards: {player}, points: {player_points}")
+        print(f"dealer's cards: {dealer}, points: {dealer_points}")
+        if  dealer_points > player_points:
+            print('you lose')
             break
-        elif kurpiye_puan > 21:
-            print('kazandınız')
+        elif dealer_points > 21:
+            print('you win')
             
     break
