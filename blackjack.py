@@ -66,7 +66,4 @@ while True:
         elif kurpiye_puan > 21:
             print('kazandınız')
             
-    break            
-        
-           
-           
+    break
