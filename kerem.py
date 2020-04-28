@@ -8,11 +8,13 @@ dogru1=('bir')
 devam1=('evet')
 giris1=input(' Kullanıcı adı: ')
 sifre1=input(' Sifre: ')
-a=len(giris1)
-a1=len(kullaniciadi)
-b=len(sifre1) 
-b1=len(sifre)
-if(a==a1 & b==b1):
+
+a = giris1
+a1 = kullaniciadi
+b = sifre1 
+b1 = sifre
+
+if a==a1 and b==b1:
      print('Oyunumuza hosgeldiniz secmek istediginiz yolu secerek hikayeye yon verin \n')
      print('uzak bi diyarda kerem kırlı karanliklarin efendisi olarak yasamaktaydi \n ')
      print('kereme bir şey yapmak lazım \n bir)keremi Sikeyim \n iki)keremi sikmeyeyim \n ')
@@ -32,5 +34,3 @@ if(a==a1 & b==b1):
          print('büyü')
 else:
      print('Sifreniz Yanlis')
-
-  
