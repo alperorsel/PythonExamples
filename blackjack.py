@@ -55,15 +55,20 @@ while True:
     elif dealer_points == 21:
         print('you lose')
     else:
-	    giris1 = input('devam etmek ister misiniz?')
+	    answer1 = input('devam etmek ister misiniz?')
 
-    while giris1 == 'hayır' and dealer_points < 21:
+    while answer1 == 'hayır':
         print(f"player's cards: {player}, points: {player_points}")
         print(f"dealer's cards: {dealer}, points: {dealer_points}")
-        if  dealer_points > player_points:
+        if dealer_points > 21:
+            print('you win')
+            break
+        elif  dealer_points > player_points:
             print('you lose')
             break
-        elif dealer_points > 21:
-            print('you win')
-            
+        else:
+            dealer.append(cards.pop())
+            dealer_points = calc_hand(dealer)
+
+                    
     break
