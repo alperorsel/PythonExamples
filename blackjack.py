@@ -42,33 +42,51 @@ dealer.append(cards.pop())
 player.append(cards.pop())
 dealer.append(cards.pop())
 
-while True:
+turn_count = 0
+
+while turn_count >= 0:
 
     player_points = calc_hand(player)
     dealer_points = calc_hand(dealer)
 
     print(f"player's cards: {player}, points: {player_points}")
-    print(f"dealer's cards: {dealer[0]} '?', points: {dealer_points}")
+    if turn_count == 0:
+        print(f"dealer's cards: {dealer[0]} '?', points: {dealer_points}")
+    else:
+        print(f"dealer's cards: {dealer}, points: {dealer_points}")
 
     if player_points == 21:
         print('you win')
+        answer1 = 0
     elif dealer_points == 21:
         print('you lose')
+        answer1 = 0
+    elif player_points > 21:
+        print("you lose")
+        answer1 = 0
+    elif dealer_points > 21:
+        print("you win")
+        answer1 = 0
     else:
 	    answer1 = input('devam etmek ister misiniz?')
 
-    while answer1 == 'hayır':
-        print(f"player's cards: {player}, points: {player_points}")
-        print(f"dealer's cards: {dealer}, points: {dealer_points}")
-        if dealer_points > 21:
-            print('you win')
-            break
-        elif  dealer_points > player_points:
-            print('you lose')
-            break
-        else:
-            dealer.append(cards.pop())
-            dealer_points = calc_hand(dealer)
+    if answer1 == 'hayır':
+    
+        while True:
+            print(f"player's cards: {player}, points: {player_points}")
+            print(f"dealer's cards: {dealer}, points: {dealer_points}")
+            if dealer_points > 21:
+                print('you win')
+                break
+            elif  dealer_points > player_points:
+                print('you lose')
+                break
+            else:
+                dealer.append(cards.pop())
+                dealer_points = calc_hand(dealer)
 
-                    
+    if answer1 == 'evet':
+        player.append(cards.pop())
+        dealer.append(cards.pop())
+        continue                    
     break
