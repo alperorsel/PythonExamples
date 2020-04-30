@@ -50,6 +50,7 @@ while turn_count >= 0:
     dealer_points = calc_hand(dealer)
 
     print(f"player's cards: {player}, points: {player_points}")
+
     if turn_count == 0:
         print(f"dealer's cards: {dealer[0]} '?', points: {dealer_points}")
     else:
@@ -68,13 +69,18 @@ while turn_count >= 0:
         print("you win")
         answer1 = 0
     else:
-	    answer1 = input('devam etmek ister misiniz?')
+	    answer1 = input('devam etmek ister misiniz?\n>')
 
     if answer1 == 'hayır':
     
         while True:
+            
+            dealer.append(cards.pop())
+            dealer_points = calc_hand(dealer)
+
             print(f"player's cards: {player}, points: {player_points}")
             print(f"dealer's cards: {dealer}, points: {dealer_points}")
+
             if dealer_points > 21:
                 print('you win')
                 break
@@ -82,10 +88,10 @@ while turn_count >= 0:
                 print('you lose')
                 break
             else:
-                dealer.append(cards.pop())
-                dealer_points = calc_hand(dealer)
-
+                continue
+                
     if answer1 == 'evet':
+        turn_count += 1
         player.append(cards.pop())
         dealer.append(cards.pop())
         continue                    
