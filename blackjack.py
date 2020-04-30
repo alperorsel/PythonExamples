@@ -75,8 +75,9 @@ while turn_count >= 0:
     
         while True:
             
-            dealer.append(cards.pop())
-            dealer_points = calc_hand(dealer)
+            if dealer_points <= player_points:
+                dealer.append(cards.pop())
+                dealer_points = calc_hand(dealer)
 
             print(f"player's cards: {player}, points: {player_points}")
             print(f"dealer's cards: {dealer}, points: {dealer_points}")
@@ -93,6 +94,9 @@ while turn_count >= 0:
     if answer1 == 'evet':
         turn_count += 1
         player.append(cards.pop())
-        dealer.append(cards.pop())
+        
+        if dealer_points <= player_points:
+            dealer.append(cards.pop())
+        
         continue                    
     break
