@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import random
-import os
 
 
 def calc_hand(hand):
@@ -65,8 +64,11 @@ while True:
             break
         elif kurpiye_puan > 21:
             print('kazandınız')
-            
-    break            
+            break
+        elif  kurpiye_puan < oyuncu_puan:
+            print('kazandınız')
+            break
+    break
+ 
         
-           
            
